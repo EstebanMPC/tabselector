@@ -31,7 +31,7 @@
         .content-body {
             display: none;
         }
-        .show-by-default {
+        .show-active {
             display: block;
         }
         .tab-active {
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="content">
-            <div id="shirts" class="content-body show-by-default">
+            <div id="shirts" class="content-body show-active">
                 <h4>Shirts</h4>
                 <p>Our shirts are all of the highest quality</p>
             </div>
@@ -69,13 +69,19 @@
     </div>
     <script>
 
-        function setNewActive(el) {
-
+        function setNewActive(el){
             var contentBodies = document.getElementsByClassName('content-body');
             for (var contentBody of contentBodies) {
                 contentBody.classList.remove('show-active');
             }
+            console.log(el.textContent);
             document.getElementById(el.textContent.trim()).classList.add('show-active');
+       
+            var tabs = document.getElementsByClassName('tab');
+            for (var tab of tabs) {
+                tab.classList.remove('tab-active');
+            }
+            el.classList.add('tab-active');
         }
 
         var tabs = document.getElementsByClassName('tab');
